@@ -7,6 +7,14 @@
     display: flex;
 }
 
+li {
+    margin-right: 30px;
+}
+
+.done > li {
+    text-decoration: line-through;
+}
+
 body {
     background-color: #6d68af;
 }
