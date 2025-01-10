@@ -66,9 +66,6 @@ class List {
 }
 
 const l = new List();
-l.add("practice");
-l.add("do homework");
-l.add("wash dishes");
 
 
 const dialog = document.querySelector('dialog');

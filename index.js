@@ -106,10 +106,12 @@ app.get("/displaytable", (req, res) =>
 //json
 app.get("/displaytasks", (req, res) => 
     {   let sql = 'SELECT task FROM tasks'; 
+        const items = [];
         let query = db.query(sql, function (err, result, fields) {
             if (err) throw err;
-            console.log(result); 
-            res.json(result);  })
+            console.log(result);
+            items.push(result); })
+        res.json(items); 
         
     }
 );
