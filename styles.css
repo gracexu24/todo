@@ -1,0 +1,14 @@
+* {
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #6d68af;
+}
+
+button {
+    background-color: rgb(0, 0, 0, 0);
+    border: solid whitesmoke;
+    border-radius: 5px;
+}
