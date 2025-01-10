@@ -9,10 +9,26 @@
 <body>
     <h1>To-do List</h1>
     <ul class="items">
-        <li>practice</li>
-        <li>do homework</li>
-        <li>wash dishes</li>
+        <div id="item1">
+            <li>practice</li>
+            <button>delete</button>
+        </div>
+        <div id="item2">
+            <li>do homework</li>
+            <button>delete</button>
+        </div>
+        <div id="item3">
+            <li>wash dishes</li>
+            <button>delete</button>
+        </div>
     </ul>
-    <button>Add task</button>
+    <dialog>
+        <form method="post">
+            <label for="new-task">New task: <input type="text" id="new-task"></label>
+            <button type="submit" id="submit">Submit</button>
+        </form>
+    </dialog>
+    <button class="add-task">Add task</button>
+    <script src="script.js"></script>
 </body>
 </html>
