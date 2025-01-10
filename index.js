@@ -57,7 +57,7 @@ app.get("/createtasks", (req, res) =>
 
 //changed sent to json
 app.get("/create/:task", (req, res) => 
-    {   let post = { id: id, task: req.params.task, completed: "0" };
+    {   let post = {task: req.params.task, completed: "0" };
         let sql = "INSERT INTO tasks SET ?";  
         let query = db.query(sql, post, (err) => 
             {   if (err) {throw err;}    
