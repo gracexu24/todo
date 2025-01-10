@@ -48,7 +48,7 @@ app.listen("3001", () =>
 //completed - 0 (incomplete), 1(complete)
 
 app.get("/createtasks", (req, res) => 
-    {  let sql =    "CREATE TABLE tasks(id INTEGER PRIMARY KEY, task VARCHAR(255), completed int)";  
+    {  let sql =    "CREATE TABLE tasks(id int AUTO_INCREMENT, task VARCHAR(255), completed int, PRIMARY KEY(id))";  
         db.query(sql, (err) => {    
             if (err) {throw err}    
             res.send("Tasks table created");  
@@ -71,11 +71,12 @@ app.get("/create/:task", (req, res) =>
 );
 
 //complete task
-//mark id (used to locate which task) as completed (changing 0 to 1)
-app.get("/markcomplete/:id", (req, res) => 
+//mark task as completed (changing 0 to 1)
+app.get("/markcomplete/:task", (req, res) => 
     {   let comp = "1";  
-        let sql = `UPDATE tasks SET completed = '${comp}' WHERE id = ${req.params.id}`;
-        let query = db.query(sql, (err) => {    
+        const task = req.params.task;
+        let sql = `UPDATE tasks SET completed = '${comp}' WHERE task = ?`;
+        let query = db.query(sql, [task], (err) => {    
             if (err) {throw err;}    
             res.send("Post updated...");  
         });
@@ -83,11 +84,11 @@ app.get("/markcomplete/:id", (req, res) =>
 );
 
 //delete task 
-//use id to know which task 
-app.get("/deletetask/:id", (req, res) => 
-    {   let sql = `DELETE FROM tasks WHERE id = ${req.params.id}`; 
+app.get("/deletetask/:task", (req, res) => 
+    {   const task = req.params.task;
+        let sql = `DELETE FROM tasks WHERE task = ?`; 
         id--; 
-        let query = db.query(sql, (err) => 
+        let query = db.query(sql, [task], (err) => 
         {   if (err) {throw err;}    
             res.send("Task deleted");  
         });
