@@ -21,8 +21,8 @@ class List {
     }
 
     complete(itemName) {
-        console.log('done');
-        this.content.set(itemName, true);
+        fetch(`http://localhost:3001/markcomplete/${itemName}`, {
+            method: 'GET'});
         this.display();
     }
 
@@ -67,7 +67,7 @@ class List {
                     console.log(item.task);
 
                     if (item.completed == 1) {
-                        item.classList.add('done');
+                        itemDOM.classList.add('done');
                     }
 
                     this.itemsDOM.appendChild(itemDOM);
