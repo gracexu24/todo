@@ -84,11 +84,17 @@ submitBtn.addEventListener('click', (e) => {
     dialog.close();
 });
 
-await fetch('http://localhost:3001/displaytasks')
-  .then(response => response.json())
-  .then(data => {
-    data.forEach(item => {
-        l.add(item);
-    });
-  })
-  .catch(error => console.error('Error fetching data:', error));
+async function getData() {
+    const url = "http://localhost:3001/displaytasks";
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+  
+      const json = await response.json();
+      console.log(json);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }

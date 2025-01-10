@@ -23,6 +23,8 @@ db.connect((err) =>
 );
 
 const app = express();
+const cors = require("cors");
+app.use(cors());
 
 //type "http://localhost:3001/createdb" into search bar to crete initially 
 app.get("/createdb", (req, res) => 
