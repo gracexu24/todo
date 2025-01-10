@@ -70,5 +70,6 @@ const input = document.querySelector('#new-task');
 submitBtn.addEventListener('click', (e) => {
     e.preventDefault();
     l.add(input.value);
+    input.value = '';
     dialog.close();
 });
