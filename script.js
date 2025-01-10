@@ -2,7 +2,6 @@
 
 class List {
     constructor() {
-        this.content = new Map();
     }
 
     // Making a GET request to the '/products/123' endpoint
@@ -41,27 +40,39 @@ class List {
         this.itemsDOM.textContent = '';
 
         let i = 0;
-        this.content.forEach((value, key) => {
-            i++;
-            const item = document.createElement('div');
-            item.id = 'item' + i;
 
-            const taskName = document.createElement('li');
-            taskName.textContent = key;
-            taskName.addEventListener('click', () => this.complete(key));
-            item.appendChild(taskName);
+        fetch('http://localhost:3001/displaytasks', {
+            method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                data.forEach(item => {
+                    i++;
 
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = 'delete';
-            deleteBtn.addEventListener('click', () => this.delete(key));
-            item.appendChild(deleteBtn);
+                    const itemDOM = document.createElement('div');
+                    itemDOM.id = 'item' + i;
 
-            if (value) {
-                item.classList.add('done');
-            }
+                    const taskName = document.createElement('li');
+                    taskName.textContent = item.task;
+                    taskName.addEventListener('click', () => this.complete(item.task));
+                    itemDOM.appendChild(taskName);
 
-            this.itemsDOM.appendChild(item);
-        });
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.textContent = 'delete';
+                    deleteBtn.addEventListener('click', () => this.delete(key));
+                    itemDOM.appendChild(deleteBtn);
+
+                    console.log(item.task);
+
+                    /*if (value) {
+                        item.classList.add('done');
+                    }*/
+
+                    this.itemsDOM.appendChild(itemDOM);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
     }
 }
 
@@ -84,15 +95,4 @@ submitBtn.addEventListener('click', (e) => {
     dialog.close();
 });
 
-fetch('http://localhost:3001/displaytasks', {
-    method: 'GET',
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    data.forEach(item => {
-        console.log(item);
-        l.add(item.task);
-    });
-  })
-  .catch(error => console.error('Error fetching data:', error));
+
