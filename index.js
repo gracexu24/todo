@@ -8,10 +8,6 @@
 const express = require("express");
 const mysql = require("mysql2");
 
-//keep track of id index 
-//need to play around and see if there is a better way - causes a bit of a bug 
-let id = 0; 
-
 //need to have mysql2 downloaded and password is whatever password used to download mysql (pls dont judge my password)
 //database needs to be created and then added here
 const db = mysql.createConnection({  host: "localhost",  user: "root",  password: "Pleaseletmein!24", database:"todolist"});
@@ -63,7 +59,6 @@ app.get("/createtasks", (req, res) =>
 app.get("/create/:task", (req, res) => 
     {   let post = { id: id, task: req.params.task, completed: "0" };
         let sql = "INSERT INTO tasks SET ?";  
-        id++;
         let query = db.query(sql, post, (err) => 
             {   if (err) {throw err;}    
                 res.send("Task added");  });
@@ -87,7 +82,6 @@ app.get("/markcomplete/:task", (req, res) =>
 app.get("/deletetask/:task", (req, res) => 
     {   const task = req.params.task;
         let sql = `DELETE FROM tasks WHERE task = ?`; 
-        id--; 
         let query = db.query(sql, [task], (err) => 
         {   if (err) {throw err;}    
             res.send("Task deleted");  
