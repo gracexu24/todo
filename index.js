@@ -60,8 +60,8 @@ app.get("/createtasks", (req, res) =>
 //!gotta edit this to connect w frontend and take in user input
 
 //changed sent to json
-app.get("/dohw", (req, res) => 
-    {   let post = { id: id, task: "Do homework", completed: "0" };
+app.get("/create/:task", (req, res) => 
+    {   let post = { id: id, task: req.params.task, completed: "0" };
         let sql = "INSERT INTO tasks SET ?";  
         id++;
         let query = db.query(sql, post, (err) => 
