@@ -91,7 +91,9 @@ const input = document.querySelector('#new-task');
 
 submitBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    l.add(input.value);
+    fetch(`http://localhost:3001/create/${input.value}`, {
+        method: 'GET'});
+    l.display();
     input.value = '';
     dialog.close();
 });
