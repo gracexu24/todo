@@ -77,6 +77,7 @@ class List {
 }
 
 const l = new List();
+l.display();
 
 
 const dialog = document.querySelector('dialog');
