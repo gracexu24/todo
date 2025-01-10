@@ -31,7 +31,8 @@ class List {
     }
     
     delete(itemName) {
-        this.content.delete(itemName);
+        fetch(`http://localhost:3001/deletetask/${itemName}`, {
+            method: 'GET'});
         this.display();
     }
 
@@ -60,7 +61,7 @@ class List {
 
                     const deleteBtn = document.createElement('button');
                     deleteBtn.textContent = 'delete';
-                    deleteBtn.addEventListener('click', () => this.delete(key));
+                    deleteBtn.addEventListener('click', () => this.delete(item.task));
                     itemDOM.appendChild(deleteBtn);
 
                     console.log(item.task);
