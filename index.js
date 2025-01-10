@@ -65,12 +65,7 @@ app.get("/create/:task", (req, res) =>
 //complete task
 //mark task as completed (changing 0 to 1)
 app.get("/markcomplete/:task", (req, res) => 
-    {   if (req.params.completed = 1){
-            comp = "0"; 
-        } 
-        else{
-            comp = "1";
-        }
+    {   let comp = '1';
         const task = req.params.task;
         let sql = `UPDATE tasks SET completed = '${comp}' WHERE task = ?`;
         let query = db.query(sql, [task], (err) => {    

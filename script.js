@@ -69,6 +69,9 @@ class List {
                     if (item.completed == 1) {
                         itemDOM.classList.add('done');
                     }
+                    else {
+                        itemDOM.classList = [];
+                    }
 
                     this.itemsDOM.appendChild(itemDOM);
                 });
