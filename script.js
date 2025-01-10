@@ -89,13 +89,13 @@ document.querySelector(".add-task").addEventListener('click', () => {
 const submitBtn = document.querySelector('button#submit');
 const input = document.querySelector('#new-task');
 
-/*submitBtn.addEventListener('click', (e) => {
+submitBtn.addEventListener('click', (e) => {
     e.preventDefault();
     fetch(`http://localhost:3001/create/${input.value}`, {
         method: 'GET'});
     l.display();
     input.value = '';
     dialog.close();
-});*/
+});
 
 
