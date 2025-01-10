@@ -56,6 +56,8 @@ app.get("/createtasks", (req, res) =>
 
 //adds a prespecified task
 //!gotta edit this to connect w frontend and take in user input
+
+//changed sent to json
 app.get("/dohw", (req, res) => 
     {   let post = { id: id, task: "Do homework", completed: "0" };
         let sql = "INSERT INTO tasks SET ?";  
@@ -97,6 +99,17 @@ app.get("/displaytable", (req, res) =>
             if (err) throw err;
             console.log(result); 
             res.send(result);  })
+        
+    }
+);
+
+//json
+app.get("/displaytasks", (req, res) => 
+    {   let sql = 'SELECT task FROM tasks'; 
+        let query = db.query(sql, function (err, result, fields) {
+            if (err) throw err;
+            console.log(result); 
+            res.json(result);  })
         
     }
 );
