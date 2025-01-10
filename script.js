@@ -66,9 +66,9 @@ class List {
 
                     console.log(item.task);
 
-                    /*if (value) {
+                    if (item.completed == 1) {
                         item.classList.add('done');
-                    }*/
+                    }
 
                     this.itemsDOM.appendChild(itemDOM);
                 });
