@@ -83,3 +83,12 @@ submitBtn.addEventListener('click', (e) => {
     input.value = '';
     dialog.close();
 });
+
+await fetch('http://localhost:3001/displaytasks')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(item => {
+        l.add(item);
+    });
+  })
+  .catch(error => console.error('Error fetching data:', error));
