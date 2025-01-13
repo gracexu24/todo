@@ -3,17 +3,6 @@
 class List {
     constructor() {
     }
-
-    // Making a GET request to the '/products/123' endpoint
-    //fetch('/dohw', {
-    //    method: 'GET',
-    //})
-        // Handling the response by converting it to JSON
-     //   .then(response => response.json())
-        // Handling the data obtained from the response
-     //   .then(data => {
-        // Update UI with product details from the response
-    //});
     
     add(task) {
         this.content.set(task, false);
