@@ -70,7 +70,7 @@ class List {
                         itemDOM.classList.add('done');
                     }
                     else {
-                        itemDOM.classList = [];
+                        itemDOM.classList.remove('done');
                     }
 
                     this.itemsDOM.appendChild(itemDOM);
